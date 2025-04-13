@@ -12,3 +12,29 @@ variable "vpc" {
   })
   description = "The VPC configuration"
 }
+
+variable "subnets" {
+  type = object({
+    private = list(
+      object({
+        name = string
+        cidr = string
+    }))
+    public = list(
+      object({
+        name = string
+        cidr = string
+    }))
+    intra = list(
+      object({
+        name = string
+        cidr = string
+    }))
+    database = list(
+      object({
+        name = string
+        cidr = string
+    }))
+  })
+  description = "The subnets configuration"
+}
