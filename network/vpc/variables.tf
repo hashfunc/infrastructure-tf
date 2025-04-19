@@ -5,10 +5,11 @@ variable "aws_region" {
 
 variable "vpc" {
   type = object({
-    name               = string
-    cidr               = string
-    azs                = list(string)
-    single_nat_gateway = bool
+    name                  = string
+    cidr                  = string
+    secondary_cidr_blocks = optional(list(string))
+    azs                   = list(string)
+    single_nat_gateway    = bool
   })
   description = "The VPC configuration"
 }

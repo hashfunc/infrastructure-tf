@@ -6,8 +6,9 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = var.vpc.name
-  cidr = var.vpc.cidr
+  name                  = var.vpc.name
+  cidr                  = var.vpc.cidr
+  secondary_cidr_blocks = var.vpc.secondary_cidr_blocks
 
   azs = [for az in var.vpc.azs : "${var.aws_region}${az}"]
 
