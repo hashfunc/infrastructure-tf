@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "secretsmanager:GetSecretValue"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:secretsmanager:${region}:${account_id}:secret:${secret_name}-*"
+        },
+        {
+            "Action": [
+                "kms:Decrypt"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:kms:${region}:${account_id}:key/*",
+            "Condition": {
+                "StringEquals": {
+                    "kms:ResourceAliases": "alias/${kms_alias}"
+                }
+            }
+        }
+    ]
+}
